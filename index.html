@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pizza Friday — Sourdough Micro Pizza · Chantilly, VA</title>
+<meta name="description" content="Slow-fermented sourdough pizza, baked one day a week in small batches in Chantilly, Virginia. Pre-orders only. Currently in the test kitchen." />
+<style>
+  :root{
+    --ink:#211a15; --cream:#faf5ec; --paper:#fffdf8; --sauce:#bf3b26; --sauce-dark:#9c2d1c;
+    --crust:#d99a4e; --basil:#3e6b34; --line:#e6dcc8; --muted:#6f6257;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:var(--ink);line-height:1.6}
+  .status-bar{background:var(--ink);color:var(--cream);text-align:center;padding:.55rem 1rem;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+  .status-bar strong{color:var(--crust)}
+  header{position:sticky;top:0;background:rgba(250,245,236,.95);border-bottom:1px solid var(--line);z-index:10}
+  nav{max-width:1060px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.2rem}
+  .logo{font-size:1.35rem;font-weight:bold;letter-spacing:.02em}
+  .logo span{color:var(--sauce)}
+  nav ul{list-style:none;display:flex;gap:1.4rem;font-size:.95rem}
+  nav a{color:var(--ink);text-decoration:none}
+  nav a:hover{color:var(--sauce)}
+  .hero{max-width:1060px;margin:0 auto;padding:4.2rem 1.2rem 3.2rem;display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center}
+  .hero h1{font-size:3rem;line-height:1.12;margin-bottom:1rem}
+  .hero h1 em{color:var(--sauce);font-style:italic}
+  .hero p{font-size:1.15rem;color:var(--muted);margin-bottom:1.6rem;max-width:34rem}
+  .btn{display:inline-block;background:var(--sauce);color:#fff;padding:.8rem 1.6rem;border-radius:999px;text-decoration:none;font-size:1rem;border:none;cursor:pointer}
+  .btn:hover{background:var(--sauce-dark)}
+  .btn.ghost{background:transparent;color:var(--sauce);border:2px solid var(--sauce)}
+  /* CSS pizza */
+  .pizza-wrap{display:flex;justify-content:center}
+  .pizza{width:320px;height:320px;border-radius:50%;background:radial-gradient(circle at 50% 50%, #f3c86b 0 58%, #e8a94c 58% 72%, #d99a4e 72% 100%);box-shadow:0 18px 40px rgba(33,26,21,.25), inset 0 0 0 10px rgba(156,45,28,.25);position:relative}
+  .pizza i{position:absolute;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 40% 35%, #d9553f, #a52c1a);box-shadow:inset 0 0 0 4px rgba(0,0,0,.12)}
+  .pizza i:nth-child(1){top:52px;left:70px}.pizza i:nth-child(2){top:38px;right:74px}
+  .pizza i:nth-child(3){bottom:58px;left:56px}.pizza i:nth-child(4){bottom:44px;right:66px}
+  .pizza i:nth-child(5){top:128px;left:132px}
+  .pizza b{position:absolute;width:20px;height:10px;border-radius:50%;background:var(--basil);opacity:.85}
+  .pizza b:nth-child(6){top:96px;left:150px}.pizza b:nth-child(7){bottom:104px;left:120px}
+  .pizza b:nth-child(8){top:150px;right:104px}
+  section{max-width:1060px;margin:0 auto;padding:3rem 1.2rem}
+  h2{font-size:2rem;margin-bottom:.6rem}
+  .sub{color:var(--muted);margin-bottom:2rem;max-width:44rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.5rem}
+  .card h3{margin-bottom:.5rem;font-size:1.2rem}
+  .card p{color:var(--muted);font-size:.98rem}
+  .tag{display:inline-block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--basil);border:1px solid var(--basil);border-radius:999px;padding:.12rem .6rem;margin-bottom:.7rem}
+  .menu .price{color:var(--sauce);font-weight:bold}
+  .steps{counter-reset:step}
+  .steps .card h3::before{counter-increment:step;content:counter(step) ". ";color:var(--sauce)}
+  .faq details{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1rem 1.3rem;margin-bottom:.8rem}
+  .faq summary{cursor:pointer;font-weight:bold}
+  .faq p{color:var(--muted);margin-top:.5rem}
+  .waitlist{background:var(--ink);color:var(--cream);border-radius:18px;padding:2.4rem;text-align:center}
+  .waitlist p{color:#d8cbb6;margin-bottom:1.4rem}
+  .waitlist form{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+  .waitlist input{padding:.8rem 1.1rem;border-radius:999px;border:none;font-size:1rem;min-width:260px}
+  .waitlist .ok{margin-top:1rem;color:var(--crust);display:none}
+  footer{border-top:1px solid var(--line);margin-top:2rem}
+  footer .inner{max-width:1060px;margin:0 auto;padding:1.6rem 1.2rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.9rem}
+  @media (max-width:760px){.hero{grid-template-columns:1fr;padding-top:2.6rem}.hero h1{font-size:2.3rem}.pizza{width:250px;height:250px}nav ul{display:none}}
+</style>
+</head>
+<body>
+
+<div class="status-bar">Now in the <strong>test kitchen</strong> — taste-testing with family &amp; friends. Not taking orders yet.</div>
+
+<header>
+  <nav>
+    <div class="logo">Pizza <span>Friday</span></div>
+    <ul>
+      <li><a href="#concept">The Concept</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>Slow dough.<br/>One day a week.<br/><em>Real sourdough pizza.</em></h1>
+    <p>Pizza Friday is a home micro-pizzeria in the making, in Chantilly, Virginia. Naturally leavened dough, fermented 48 hours, baked to order in small Friday batches — never rushed, never reheated.</p>
+    <a class="btn" href="#waitlist">Join the waitlist</a>
+    <a class="btn ghost" href="#menu">See the menu</a>
+  </div>
+  <div class="pizza-wrap"><div class="pizza"><i></i><i></i><i></i><i></i><i></i><b></b><b></b><b></b></div></div>
+</div>
+
+<section id="concept">
+  <h2>What makes it different</h2>
+  <p class="sub">Three things you will not find at a chain — or at most pizza shops:</p>
+  <div class="grid">
+    <div class="card">
+      <span class="tag">The dough</span>
+      <h3>48-hour sourdough, part whole wheat</h3>
+      <p>No commercial yeast. Our dough is leavened only by a living starter — the same one behind our whole-wheat loaves — and cold-fermented for two days. The result: deep flavor, a blistered crust and a pizza that sits easy.</p>
+    </div>
+    <div class="card">
+      <span class="tag">The special</span>
+      <h3>A rotating Latin special</h3>
+      <p>Every month, one special with roots: pernil and sweet plantain, sofrito sauce, the flavors of home — on a Neapolitan-style sourdough crust. When it sells out, it's gone until next month.</p>
+    </div>
+    <div class="card">
+      <span class="tag">The ritual</span>
+      <h3>One Friday drop, numbered pizzas</h3>
+      <p>A limited batch each Friday, made to pre-order and baked minutes before pickup. Every pizza is numbered by batch — when the list fills, the week is closed. Small on purpose.</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="menu">
+  <h2>Draft menu</h2>
+  <p class="sub">The launch menu stays short on purpose — a few pizzas, done right. Prices are drafts while we finish testing.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Margherita</h3>
+      <p>San Marzano-style tomato, fresh mozzarella, basil, olive oil. The classic, on our 48-hour crust.</p>
+      <p class="price">Draft price — TBD</p>
+    </div>
+    <div class="card">
+      <h3>Pepperoni</h3>
+      <p>Tomato, mozzarella and cup-and-char pepperoni with a touch of honey at the end.</p>
+      <p class="price">Draft price — TBD</p>
+    </div>
+    <div class="card">
+      <h3>La Especial</h3>
+      <p>The rotating monthly special with Latin roots. The first one is already in testing — details when we launch.</p>
+      <p class="price">Rotating — TBD</p>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <h2>How it will work</h2>
+  <p class="sub">Simple, small and planned ahead — like everything in our kitchen.</p>
+  <div class="grid steps">
+    <div class="card"><h3>Pre-order by Thursday</h3><p>The Friday list opens early in the week and closes when the batch fills. Payment confirms your spot.</p></div>
+    <div class="card"><h3>Baked Friday, to order</h3><p>Your pizza goes into the oven minutes before your pickup slot — not before. Hot and blistered, never reheated.</p></div>
+    <div class="card"><h3>Pickup in Chantilly</h3><p>Pick up in your time window, take it home, and if there's a handwritten note in the box — that's on purpose.</p></div>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <h2>FAQ</h2>
+  <details><summary>Are you open for orders?</summary><p>Not yet. We are in the testing phase — baking for family, church and friends while we fine-tune the dough, the oven and the timing, and complete the required permits for selling food. Join the waitlist and you'll be the first to know when the first Friday opens.</p></details>
+  <details><summary>Why only Fridays?</summary><p>Great sourdough can't be rushed, and neither can we. One day a week keeps every batch small, fresh and consistent — and leaves room for everything else that matters.</p></details>
+  <details><summary>Is the dough really 100% sourdough?</summary><p>Yes — no commercial yeast. The dough is leavened with our starter and fermented about 48 hours, with a portion of whole-wheat flour in the blend.</p></details>
+  <details><summary>Do you also bake bread?</summary><p>Yes — the same starter feeds our whole-wheat sourdough loaves. A weekend bake box (Friday pizza + Saturday loaf) is in the plans.</p></details>
+</section>
+
+<section id="waitlist">
+  <div class="waitlist">
+    <h2>Be first in line for the first Friday</h2>
+    <p>Join the waitlist and we'll let you know the moment pre-orders open.</p>
+    <form id="waitlistForm">
+      <input type="email" id="email" placeholder="Your email" required />
+      <button class="btn" type="submit">Join the waitlist</button>
+    </form>
+    <p class="ok" id="okMsg">You're on the list. See you on a Friday soon.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <div>Pizza Friday — Sourdough Micro Pizza · Chantilly, Virginia</div>
+    <div>Baked with patience. <span id="year"></span></div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = '© ' + new Date().getFullYear();
+  document.getElementById('waitlistForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = document.getElementById('email').value.trim();
+    if(!email) return;
+    var list = JSON.parse(localStorage.getItem('pizzaFridayWaitlist') || '[]');
+    list.push({email: email, at: new Date().toISOString()});
+    localStorage.setItem('pizzaFridayWaitlist', JSON.stringify(list));
+    document.getElementById('okMsg').style.display = 'block';
+    document.getElementById('email').value = '';
+  });
+</script>
+</body>
+</html>

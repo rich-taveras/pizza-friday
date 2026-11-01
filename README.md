@@ -15,5 +15,5 @@ The concept: 48-hour sourdough pizza (part whole wheat, same starter as the brea
 
 ## Notes
 
-- Menu prices are drafts ("TBD") on purpose — set them after the test Fridays.
+- Menu prices set 2026-11-01 after checking Northern Virginia artisan comps: Margherita $16, Pepperoni $18, La Especial $20 (all 12"). Orders online only.
 - The waitlist form currently saves emails in the browser's localStorage only (placeholder). Connect a real form service before launch.

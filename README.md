@@ -17,3 +17,5 @@ The concept: 48-hour sourdough pizza (part whole wheat, same starter as the brea
 
 - Menu prices set 2026-11-01 after checking Northern Virginia artisan comps: Margherita $16, Pepperoni $18, La Especial $20 (all 12"). Orders online only.
 - The waitlist form currently saves emails in the browser's localStorage only (placeholder). Connect a real form service before launch.
+
+**Live site:** https://rich-taveras.github.io/pizza-friday/ (GitHub Pages, main branch). This repo is the single source of truth for the project (Rich, 2026-11-01); the in-app preview copy may drift — always work from here.
